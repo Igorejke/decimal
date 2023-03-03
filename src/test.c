@@ -3,15 +3,18 @@
 #include <stdbool.h>
 #include <math.h>
 
+typedef struct {
+    unsigned int bits[4];
+} s21_decimal;
 
-int getbits()
 int main()
 {
-    bool a[32];
+    bool a[32] = {0};
     int decimal;
     int length = 32;
     int decimal_alt;
     int count = 0;
+    int count_value = 0;
     do {
         scanf("%d", &decimal);
         if (decimal < 0) printf("Enter decimal number NON-zero\n");
@@ -21,8 +24,9 @@ int main()
         else a[length] = 1;
         decimal /= 2;
         length--;
+        count_value++;
     } while (decimal != 0);
-    for (int i = 0; i < 33; i++) {
+    for (int i = 33 - count_value; i < 33; i++) {
         printf("%d", a[i]);
     }
     printf("\n");
